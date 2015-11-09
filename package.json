@@ -1,0 +1,34 @@
+{
+  "name": "@tyriar/fibonacci-heap",
+  "version": "0.1.0",
+  "description": "An implementation of the Fibonacci heap data structure",
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tyriar/js-fibonacci-heap.git"
+  },
+  "keywords": [
+    "A*",
+    "computer science",
+    "data structure",
+    "dijkstra",
+    "heap",
+    "priority queue",
+    "tree"
+  ],
+  "author": "Daniel Imms (http://www.growingwiththeweb.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tyriar/js-fibonacci-heap/issues"
+  },
+  "homepage": "https://github.com/Tyriar/js-fibonacci-heap",
+  "devDependencies": {
+    "ava": "^0.4.2",
+    "xo": "^0.10.1"
+  },
+  "xo": {
+    "space": true
+  }
+}
