@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "description": "An implementation of the Fibonacci heap data structure",
   "scripts": {
-    "test": "xo && ava"
+    "test": "xo && nyc ava",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
     "priority queue",
     "tree"
   ],
+  "main": "index.js",
   "author": "Daniel Imms (http://www.growingwiththeweb.com)",
   "license": "MIT",
   "bugs": {
@@ -26,6 +28,8 @@
   "homepage": "https://github.com/Tyriar/js-fibonacci-heap",
   "devDependencies": {
     "ava": "*",
+    "coveralls": "^2.11.4",
+    "nyc": "^3.2.2",
     "xo": "*"
   },
   "xo": {
