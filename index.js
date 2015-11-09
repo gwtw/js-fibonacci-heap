@@ -82,6 +82,12 @@ FibonacciHeap.prototype.delete = function (node) {
   this.extractMinimum();
 };
 
+/**
+ * Extracts and returns the minimum node from the heap.
+ *
+ * @return {Node} node The heap's minimum node or undefined if the heap is
+ * empty.
+ */
 FibonacciHeap.prototype.extractMinimum = function () {
   var extractedMin = this.minNode;
   if (extractedMin) {
@@ -113,6 +119,12 @@ FibonacciHeap.prototype.extractMinimum = function () {
   return extractedMin;
 };
 
+/**
+ * Returns the minimum node from the heap.
+ *
+ * @return {Node} node The heap's minimum node or undefined if the heap is
+ * empty.
+ */
 FibonacciHeap.prototype.findMinimum = function () {
   return this.minNode;
 };
@@ -131,10 +143,16 @@ FibonacciHeap.prototype.insert = function (key, value) {
   return node;
 };
 
+/**
+ * @return {boolean} Whether the heap is empty.
+ */
 FibonacciHeap.prototype.isEmpty = function () {
   return this.minNode === undefined;
 };
 
+/**
+ * @return {number} The size of the heap.
+ */
 FibonacciHeap.prototype.size = function () {
   if (this.isEmpty()) {
     return 0;
@@ -142,12 +160,23 @@ FibonacciHeap.prototype.size = function () {
   return getNodeListSize(this.minNode);
 };
 
-// Union another fibonacci heap with this one
+/**
+ * Joins another heap to this heap.
+ *
+ * @param {BinaryHeap} otherHeap The other heap.
+ */
 FibonacciHeap.prototype.union = function (other) {
   this.minNode = mergeLists(this.minNode, other.minNode, this.compare);
   this.nodeCount += other.nodeCount;
 };
 
+/**
+ * Compares two nodes with each other.
+ *
+ * @param {Object} a The first key to compare.
+ * @param {Object} b The second key to compare.
+ * @return -1, 0 or 1 if a < b, a == b or a > b respectively.
+ */
 FibonacciHeap.prototype.compare = function (a, b) {
   if (a.key > b.key) {
     return 1;
