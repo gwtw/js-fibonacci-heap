@@ -4,6 +4,8 @@
 
 A JavaScript implementation of the [Fibonacci heap](http://www.growingwiththeweb.com/2014/06/fibonacci-heap.html) data structure.
 
+![](http://www.growingwiththeweb.com/images/2014/06/15/fibonacci-heap.svg)
+
 
 
 ## Operation time complexity
