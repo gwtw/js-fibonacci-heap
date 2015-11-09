@@ -8,17 +8,17 @@ A JavaScript implementation of the [Fibonacci heap](http://www.growingwiththeweb
 
 ## Operation time complexity
 
-| Operation        |
-|------------------|
-| `clear`          | Θ(1)\*
-| `decreaseKey`    | Θ(1)\*
-| `delete`         | O(log n)\*
-| `extractMinimum` | O(log n)\*
-| `findMinimum`    | Θ(1)
-| `insert`         | Θ(1)
-| `isEmpty`        | Θ(1)
-| `size`           | Θ(n)
-| `union`          | Θ(1)
+| Operation        | Complexity |
+|------------------|------------|
+| `clear`          | Θ(1)\*     |
+| `decreaseKey`    | Θ(1)\*     |
+| `delete`         | O(log n)\* |
+| `extractMinimum` | O(log n)\* |
+| `findMinimum`    | Θ(1)       |
+| `insert`         | Θ(1)       |
+| `isEmpty`        | Θ(1)       |
+| `size`           | Θ(n)       |
+| `union`          | Θ(1)       |
 
 \* amortised
 
