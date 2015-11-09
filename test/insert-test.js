@@ -14,8 +14,8 @@ test('should insert items into the heap', t => {
 
 test('should return the inserted node', t => {
   var heap = new FibonacciHeap();
-  var ret = heap.insert(1, { 'foo': 'bar' });
+  var ret = heap.insert(1, {foo: 'bar'});
   t.is(ret.key, 1);
-  t.same(ret.value, {'foo': 'bar'});
+  t.same(ret.value, {foo: 'bar'});
   t.end();
 });

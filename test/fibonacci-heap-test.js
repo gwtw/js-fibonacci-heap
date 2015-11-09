@@ -20,10 +20,10 @@ test('should work with string keys', t => {
 
 test('should give an empty heap after inserting and extracting 1000 in-order elements', t => {
   var heap = new FibonacciHeap();
-  for (var i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     heap.insert(i, i);
   }
-  for (var i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     heap.extractMinimum();
   }
   t.true(heap.isEmpty());
@@ -32,10 +32,10 @@ test('should give an empty heap after inserting and extracting 1000 in-order ele
 
 test('should give an empty heap after inserting and extracting 1000 reversed elements', t => {
   var heap = new FibonacciHeap();
-  for (var i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     heap.insert(i, i);
   }
-  for (var i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     heap.extractMinimum();
   }
   t.true(heap.isEmpty());
@@ -44,14 +44,14 @@ test('should give an empty heap after inserting and extracting 1000 reversed ele
 
 test('should give an empty heap after inserting and extracting 1000 pseudo-randomized elements', t => {
   var heap = new FibonacciHeap();
-  for (var i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     if (i % 2 === 0) {
       heap.insert(i, i);
     } else {
       heap.insert(999 - i, 999 - i);
     }
   }
-  for (var i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     heap.extractMinimum();
   }
   t.true(heap.isEmpty());
@@ -60,19 +60,18 @@ test('should give an empty heap after inserting and extracting 1000 pseudo-rando
 
 test('should be able to remove all elements after inserting, decreasing a key, then extracting', t => {
   var heap = new FibonacciHeap();
-  var i;
   var nodes = [];
-  for (i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     nodes.push(heap.insert(i, i));
   }
 
   heap.decreaseKey(nodes[20], -10);
 
-  for (i = 500; i < 1500; i++) {
+  for (let i = 500; i < 1500; i++) {
     heap.insert(i, i);
   }
 
-  for (i = 0; i < 2000; i++) {
+  for (let i = 0; i < 2000; i++) {
     heap.extractMinimum();
   }
   t.true(heap.isEmpty());
@@ -81,21 +80,20 @@ test('should be able to remove all elements after inserting, decreasing a key, t
 
 test('should be able to remove all elements after inserting, decreasing multiple keys, then extracting', t => {
   var heap = new FibonacciHeap();
-  var i;
   var nodes = [];
-  for (i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     nodes.push(heap.insert(i, i));
   }
 
-  for (i = 0; i < 1000; i+=50) {
+  for (let i = 0; i < 1000; i += 50) {
     heap.decreaseKey(nodes[i], -i - 5);
   }
 
-  for (i = 500; i < 1500; i++) {
+  for (let i = 500; i < 1500; i++) {
     heap.insert(i, i);
   }
 
-  for (i = 0; i < 2000; i++) {
+  for (let i = 0; i < 2000; i++) {
     heap.extractMinimum();
   }
   t.true(heap.isEmpty());
@@ -104,20 +102,19 @@ test('should be able to remove all elements after inserting, decreasing multiple
 
 test('should handle 1000 shuffled elements', t => {
   var heap = new FibonacciHeap();
-  var i;
   var input = [];
-  for (i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     input.push(i);
   }
   // shuffle
-  for (i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     var swapWith = Math.floor(Math.random() * 1000);
     var temp = input[i];
     input[i] = input[swapWith];
     input[swapWith] = temp;
   }
   // insert
-  for (i = 0; i < 1000; i++) {
+  for (let i = 0; i < 1000; i++) {
     heap.insert(input[i], null);
   }
   // extract
