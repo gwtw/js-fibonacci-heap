@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "An implementation of the Fibonacci heap data structure",
   "scripts": {
-    "test": "xo && nyc ava",
+    "test": "xo --space 2 && nyc ava",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -31,8 +31,5 @@
     "coveralls": "^2.11.4",
     "nyc": "^3.2.2",
     "xo": "*"
-  },
-  "xo": {
-    "space": true
   }
 }
