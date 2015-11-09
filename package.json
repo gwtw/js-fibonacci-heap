@@ -1,6 +1,6 @@
 {
   "name": "@tyriar/fibonacci-heap",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An implementation of the Fibonacci heap data structure",
   "scripts": {
     "test": "xo && nyc ava",
