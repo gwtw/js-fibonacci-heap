@@ -1,29 +1,5 @@
 'use strict';
 
-// This Iterator is used to simplify the consolidate() method. It works by
-// gathering a list of the nodes in the list in the constructor since the
-// nodes can change during consolidation.
-var NodeListIterator = function (start) {
-  if (!start) {
-    return;
-  }
-
-  this.items = [];
-  var current = start;
-  do {
-    this.items.push(current);
-    current = current.next;
-  } while (start !== current);
-};
-
-NodeListIterator.prototype.hasNext = function () {
-  return this.items.length > 0;
-};
-
-NodeListIterator.prototype.next = function () {
-  return this.items.shift();
-};
-
 /**
  * Creates a Fibonacci heap.
  *
@@ -48,6 +24,12 @@ FibonacciHeap.prototype.clear = function () {
   this.nodeCount = 0;
 };
 
+/**
+ * Decreases a key of a node.
+ *
+ * @param {Node} node The node to decrease the key of.
+ * @param {Object} newKey The new key to assign to the node.
+ */
 FibonacciHeap.prototype.decreaseKey = function (node, newKey) {
   if (typeof node === 'undefined') {
     throw new Error('Cannot decrease key of non-existent node');
@@ -67,6 +49,11 @@ FibonacciHeap.prototype.decreaseKey = function (node, newKey) {
   }
 };
 
+/**
+ * Deletes a node.
+ *
+ * @param {Node} node The node to delete.
+ */
 FibonacciHeap.prototype.delete = function (node) {
   // This is a special implementation of decreaseKey that sets the
   // argument to the minimum value. This is necessary to make generic keys
@@ -143,16 +130,12 @@ FibonacciHeap.prototype.insert = function (key, value) {
   return node;
 };
 
-/**
- * @return {boolean} Whether the heap is empty.
- */
+/** @return {boolean} Whether the heap is empty. */
 FibonacciHeap.prototype.isEmpty = function () {
   return this.minNode === undefined;
 };
 
-/**
- * @return {number} The size of the heap.
- */
+/** @return {number} The size of the heap. */
 FibonacciHeap.prototype.size = function () {
   if (this.isEmpty()) {
     return 0;
@@ -187,6 +170,36 @@ FibonacciHeap.prototype.compare = function (a, b) {
   return 0;
 };
 
+/**
+ * Creates an Iterator used to simplify the consolidate() method. It works by
+ * making a shallow copy of the nodes in the root list and iterating over the
+ * shallow copy instead of the source as the source will be modified.
+ *
+ * @param {Node} start A node from the root list.
+ */
+var NodeListIterator = function (start) {
+  if (!start) {
+    return;
+  }
+
+  this.items = [];
+  var current = start;
+  do {
+    this.items.push(current);
+    current = current.next;
+  } while (start !== current);
+};
+
+/** @return Whether there is a next node in the iterator. */
+NodeListIterator.prototype.hasNext = function () {
+  return this.items.length > 0;
+};
+
+/** @return {Node} The next node. */
+NodeListIterator.prototype.next = function () {
+  return this.items.shift();
+};
+
 function cut(node, parent, minNode, compare) {
   removeNodeFromList(node);
   parent.degree--;
@@ -213,6 +226,14 @@ function cascadingCut(node, minNode, compare) {
   return minNode;
 }
 
+/**
+ * Merge all trees of the same order together until there are no two trees of
+ * the same order.
+ *
+ * @param {Node} minNode The current minimum node.
+ * @param {function} compare The node comparison function to use.
+ * @return The new minimum node.
+ */
 function consolidate(minNode, compare) {
   var aux = [];
   var it = new NodeListIterator(minNode);
@@ -246,16 +267,27 @@ function consolidate(minNode, compare) {
   return minNode;
 }
 
+/**
+ * Removes a node from the root node list.
+ *
+ * @param {Node} node The node to remove.
+ */
 function removeNodeFromList(node) {
   var prev = node.prev;
   var next = node.next;
   prev.next = next;
   next.prev = prev;
-
   node.next = node;
   node.prev = node;
 }
 
+/**
+ * Links two heaps together.
+ *
+ * @param {Node} max The heap with the larger root.
+ * @param {Node} min The heap with the smaller root.
+ * @param {function} compare The node comparison function to use.
+ */
 function linkHeaps(max, min, compare) {
   removeNodeFromList(max);
   min.child = mergeLists(max, min.child, compare);
@@ -263,7 +295,14 @@ function linkHeaps(max, min, compare) {
   max.isMarked = false;
 }
 
-// Merges two lists and returns the minimum node
+/**
+ * Merge two lists of nodes together.
+ *
+ * @param {Node} a The first list to merge.
+ * @param {Node} b The second list to merge.
+ * @param {function} compare The node comparison function to use.
+ * @return The new minimum node from the two lists.
+ */
 function mergeLists(a, b, compare) {
   if (!a && !b) {
     return undefined;
@@ -284,6 +323,12 @@ function mergeLists(a, b, compare) {
   return compare(a, b) < 0 ? a : b;
 }
 
+/**
+ * Gets the size of a node list.
+ *
+ * @param {Node} node A node within the node list.
+ * @return The size of the node list.
+ */
 function getNodeListSize(node) {
   var count = 0;
   var current = node;
@@ -299,6 +344,11 @@ function getNodeListSize(node) {
   return count;
 }
 
+/**
+ * Creates a FibonacciHeap node.
+ *
+ * @constructor
+ */
 function Node(key, value) {
   this.key = key;
   this.value = value;
