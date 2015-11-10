@@ -130,12 +130,16 @@ FibonacciHeap.prototype.insert = function (key, value) {
   return node;
 };
 
-/** @return {boolean} Whether the heap is empty. */
+/**
+ * @return {boolean} Whether the heap is empty.
+ */
 FibonacciHeap.prototype.isEmpty = function () {
   return this.minNode === undefined;
 };
 
-/** @return {number} The size of the heap. */
+/**
+ * @return {number} The size of the heap.
+ */
 FibonacciHeap.prototype.size = function () {
   if (this.isEmpty()) {
     return 0;
@@ -158,7 +162,7 @@ FibonacciHeap.prototype.union = function (other) {
  *
  * @param {Object} a The first key to compare.
  * @param {Object} b The second key to compare.
- * @return -1, 0 or 1 if a < b, a == b or a > b respectively.
+ * @return {number} -1, 0 or 1 if a < b, a == b or a > b respectively.
  */
 FibonacciHeap.prototype.compare = function (a, b) {
   if (a.key > b.key) {
@@ -190,12 +194,16 @@ var NodeListIterator = function (start) {
   } while (start !== current);
 };
 
-/** @return Whether there is a next node in the iterator. */
+/**
+ * @return Whether there is a next node in the iterator.
+ */
 NodeListIterator.prototype.hasNext = function () {
   return this.items.length > 0;
 };
 
-/** @return {Node} The next node. */
+/**
+ * @return {Node} The next node.
+ */
 NodeListIterator.prototype.next = function () {
   return this.items.shift();
 };
@@ -268,7 +276,7 @@ function consolidate(minNode, compare) {
 }
 
 /**
- * Removes a node from the root node list.
+ * Removes a node from a node list.
  *
  * @param {Node} node The node to remove.
  */
