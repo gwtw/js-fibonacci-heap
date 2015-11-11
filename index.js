@@ -182,10 +182,6 @@ FibonacciHeap.prototype.compare = function (a, b) {
  * @param {Node} start A node from the root list.
  */
 var NodeListIterator = function (start) {
-  if (!start) {
-    return;
-  }
-
   this.items = [];
   var current = start;
   do {
