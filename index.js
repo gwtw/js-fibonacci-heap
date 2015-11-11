@@ -160,6 +160,7 @@ FibonacciHeap.prototype.union = function (other) {
 /**
  * Compares two nodes with each other.
  *
+ * @private
  * @param {Object} a The first key to compare.
  * @param {Object} b The second key to compare.
  * @return {number} -1, 0 or 1 if a < b, a == b or a > b respectively.
@@ -179,6 +180,7 @@ FibonacciHeap.prototype.compare = function (a, b) {
  * making a shallow copy of the nodes in the root list and iterating over the
  * shallow copy instead of the source as the source will be modified.
  *
+  * @private
  * @param {Node} start A node from the root list.
  */
 var NodeListIterator = function (start) {
@@ -195,19 +197,24 @@ var NodeListIterator = function (start) {
 };
 
 /**
- * @return Whether there is a next node in the iterator.
+ * @private
+ * @return {boolean} Whether there is a next node in the iterator.
  */
 NodeListIterator.prototype.hasNext = function () {
   return this.items.length > 0;
 };
 
 /**
+ * @private
  * @return {Node} The next node.
  */
 NodeListIterator.prototype.next = function () {
   return this.items.shift();
 };
 
+/**
+ * @private
+ */
 function cut(node, parent, minNode, compare) {
   removeNodeFromList(node);
   parent.degree--;
@@ -221,6 +228,9 @@ function cut(node, parent, minNode, compare) {
   return minNode;
 }
 
+/**
+ * @private
+ */
 function cascadingCut(node, minNode, compare) {
   var parent = node.parent;
   if (parent) {
@@ -238,9 +248,10 @@ function cascadingCut(node, minNode, compare) {
  * Merge all trees of the same order together until there are no two trees of
  * the same order.
  *
+ * @private
  * @param {Node} minNode The current minimum node.
  * @param {function} compare The node comparison function to use.
- * @return The new minimum node.
+ * @return {Node} The new minimum node.
  */
 function consolidate(minNode, compare) {
   var aux = [];
@@ -278,6 +289,7 @@ function consolidate(minNode, compare) {
 /**
  * Removes a node from a node list.
  *
+ * @private
  * @param {Node} node The node to remove.
  */
 function removeNodeFromList(node) {
@@ -292,6 +304,7 @@ function removeNodeFromList(node) {
 /**
  * Links two heaps together.
  *
+ * @private
  * @param {Node} max The heap with the larger root.
  * @param {Node} min The heap with the smaller root.
  * @param {function} compare The node comparison function to use.
@@ -306,10 +319,11 @@ function linkHeaps(max, min, compare) {
 /**
  * Merge two lists of nodes together.
  *
+ * @private
  * @param {Node} a The first list to merge.
  * @param {Node} b The second list to merge.
  * @param {function} compare The node comparison function to use.
- * @return The new minimum node from the two lists.
+ * @return {Node} The new minimum node from the two lists.
  */
 function mergeLists(a, b, compare) {
   if (!a && !b) {
@@ -334,8 +348,9 @@ function mergeLists(a, b, compare) {
 /**
  * Gets the size of a node list.
  *
+ * @private
  * @param {Node} node A node within the node list.
- * @return The size of the node list.
+ * @return {number} The size of the node list.
  */
 function getNodeListSize(node) {
   var count = 0;
@@ -356,6 +371,7 @@ function getNodeListSize(node) {
  * Creates a FibonacciHeap node.
  *
  * @constructor
+ * @private
  */
 function Node(key, value) {
   this.key = key;

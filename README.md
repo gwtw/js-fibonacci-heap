@@ -6,32 +6,11 @@ A JavaScript implementation of the [Fibonacci heap](http://www.growingwiththeweb
 
 ![](http://www.growingwiththeweb.com/images/2014/06/15/fibonacci-heap.svg)
 
-
-
-## Operation time complexity
-
-| Operation        | Complexity |
-|------------------|------------|
-| `clear`          | Θ(1)\*     |
-| `decreaseKey`    | Θ(1)\*     |
-| `delete`         | O(log n)\* |
-| `extractMinimum` | O(log n)\* |
-| `findMinimum`    | Θ(1)       |
-| `insert`         | Θ(1)       |
-| `isEmpty`        | Θ(1)       |
-| `size`           | Θ(n)       |
-| `union`          | Θ(1)       |
-
-\* amortised
-
-
-
 ## Install
 
 ```bash
 npm install --save @tyriar/fibonacci-heap
 ```
-
 
 ## Usage
 
@@ -50,8 +29,92 @@ while (!heap.isEmpty()) {
 }
 ```
 
+## Operation time complexity
 
+| Operation        | Complexity |
+| ---------------- | ---------- |
+| `clear`          | Θ(1)\*     |
+| `decreaseKey`    | Θ(1)\*     |
+| `delete`         | O(log n)\* |
+| `extractMinimum` | O(log n)\* |
+| `findMinimum`    | Θ(1)       |
+| `insert`         | Θ(1)       |
+| `isEmpty`        | Θ(1)       |
+| `size`           | Θ(n)       |
+| `union`          | Θ(1)       |
 
-## License
+\* amortized
 
-MIT © [Daniel Imms](http://www.growingwiththeweb.com)
+## API
+
+### FibonacciHeap
+
+Creates a Fibonacci heap.
+
+**Parameters**
+
+-   `customCompare` **function** An optional custom node comparison
+    function.
+
+#### clear
+
+Clears the heap's data, making it an empty heap.
+
+#### decreaseKey
+
+Decreases a key of a node.
+
+**Parameters**
+
+-   `node` **Node** The node to decrease the key of.
+-   `newKey` **Object** The new key to assign to the node.
+
+#### delete
+
+Deletes a node.
+
+**Parameters**
+
+-   `node` **Node** The node to delete.
+
+#### extractMinimum
+
+Extracts and returns the minimum node from the heap.
+
+Returns **Node** node The heap's minimum node or undefined if the heap is
+empty.
+
+#### findMinimum
+
+Returns the minimum node from the heap.
+
+Returns **Node** node The heap's minimum node or undefined if the heap is
+empty.
+
+#### insert
+
+Inserts a new key-value pair into the heap.
+
+**Parameters**
+
+-   `key` **Object** The key to insert.
+-   `value` **Object** The value to insert.
+
+Returns **Node** node The inserted node.
+
+#### isEmpty
+
+Returns **boolean** Whether the heap is empty.
+
+#### size
+
+Returns **number** The size of the heap.
+
+#### union
+
+Joins another heap to this heap.
+
+**Parameters**
+
+-   `otherHeap` **BinaryHeap** The other heap.
+-   `other`  
