@@ -55,10 +55,9 @@ FibonacciHeap.prototype.decreaseKey = function (node, newKey) {
  * @param {Node} node The node to delete.
  */
 FibonacciHeap.prototype.delete = function (node) {
-  // This is a special implementation of decreaseKey that sets the
-  // argument to the minimum value. This is necessary to make generic keys
-  // work, since there is no MIN_VALUE constant for generic types.
-  node.isMinimum = true;
+  // This is a special implementation of decreaseKey that sets the argument to
+  // the minimum value. This is necessary to make generic keys work, since there
+  // is no MIN_VALUE constant for generic types.
   var parent = node.parent;
   if (parent) {
     cut(node, parent, this.minNode, this.compare);
@@ -88,16 +87,15 @@ FibonacciHeap.prototype.extractMinimum = function () {
     }
 
     var nextInRootList;
-    if (this.minNode.next !== this.minNode) {
-      nextInRootList = this.minNode.next;
+    if (extractedMin.next !== extractedMin) {
+      nextInRootList = extractedMin.next;
     }
     // Remove min from root list
     removeNodeFromList(extractedMin);
     this.nodeCount--;
 
     // Merge the children of the minimum node with the root list
-    this.minNode = mergeLists(nextInRootList, extractedMin.child,
-        this.compare);
+    this.minNode = mergeLists(nextInRootList, extractedMin.child, this.compare);
     if (nextInRootList) {
       this.minNode = nextInRootList;
       this.minNode = consolidate(this.minNode, this.compare);
@@ -180,7 +178,7 @@ FibonacciHeap.prototype.compare = function (a, b) {
  * making a shallow copy of the nodes in the root list and iterating over the
  * shallow copy instead of the source as the source will be modified.
  *
-  * @private
+ * @private
  * @param {Node} start A node from the root list.
  */
 var NodeListIterator = function (start) {
@@ -213,23 +211,37 @@ NodeListIterator.prototype.next = function () {
 };
 
 /**
+ * Cut the link between a node and its parent, moving the node to the root list.
+ *
  * @private
+ * @param {Node} node The node being cut.
+ * @param {Node} parent The parent of the node being cut.
+ * @param {Node} minNode The minimum node in the root list.
+ * @param {function} compare The node comparison function to use.
+ * @return {Node} The heap's new minimum node.
  */
 function cut(node, parent, minNode, compare) {
-  removeNodeFromList(node);
   parent.degree--;
   if (node.next === node) {
     parent.child = undefined;
   } else {
     parent.child = node.next;
   }
+  removeNodeFromList(node);
   minNode = mergeLists(minNode, node, compare);
   node.isMarked = false;
   return minNode;
 }
 
 /**
+ * Perform a cascading cut on a node; mark the node if it is not marked,
+ * otherwise cut the node and perform a cascading cut on its parent.
+ *
  * @private
+ * @param {Node} node The node being considered to be cut.
+ * @param {Node} minNode The minimum node in the root list.
+ * @param {function} compare The node comparison function to use.
+ * @return {Node} The heap's new minimum node.
  */
 function cascadingCut(node, minNode, compare) {
   var parent = node.parent;
@@ -302,7 +314,7 @@ function removeNodeFromList(node) {
 }
 
 /**
- * Links two heaps together.
+ * Links two heaps of the same order together.
  *
  * @private
  * @param {Node} max The heap with the larger root.
@@ -383,7 +395,6 @@ function Node(key, value) {
   this.parent = undefined;
   this.child = undefined;
   this.isMarked = undefined;
-  this.isMinimum = undefined;
 }
 
 module.exports = FibonacciHeap;
