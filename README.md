@@ -9,7 +9,7 @@ A JavaScript implementation of the [Fibonacci heap](http://www.growingwiththeweb
 ## Features
 
 - 100% test coverage
-- Supports all common heap
+- Supports all common heap operations
 - Store keys with optional associated values
 - Optional custom compare function that can utilize both key and value to give full control over the order of the data
 
