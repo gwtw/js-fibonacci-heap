@@ -6,6 +6,13 @@ A JavaScript implementation of the [Fibonacci heap](http://www.growingwiththeweb
 
 ![](http://www.growingwiththeweb.com/images/2014/06/15/fibonacci-heap.svg)
 
+## Features
+
+- 100% test coverage
+- Supports all common heap
+- Store keys with optional associated values
+- Optional custom compare function that can utilize both key and value to give full control over the order of the data
+
 ## Install
 
 ```bash
@@ -15,18 +22,46 @@ npm install --save @tyriar/fibonacci-heap
 ## Usage
 
 ```javascript
-var FibonacciHeap = require("@tyriar/fibonacci-heap");
+// Import npm module
+var FibonacciHeap = require('@tyriar/fibonacci-heap';
 
+// Construct FibonacciHeap
 var heap = new FibonacciHeap();
+// Insert keys only
 heap.insert(3);
 heap.insert(7);
-heap.insert(8);
-heap.insert(1);
-heap.insert(2);
+// Insert keys and values
+heap.insert(8, {foo: 'bar'});
+heap.insert(1, {foo: 'baz'});
 
+// Extract all nodes in order
 while (!heap.isEmpty()) {
-  console.log(heap.extractMinimum());
+  var node = heap.extractMinimum();
+  console.log('key: ' + node.key + ', value: ' + node.value);
 }
+// > key: 1, value: [object Object]
+// > key: 3, value: undefined
+// > key: 7, value: undefined
+// > key: 8, value: [object Object]
+
+// Construct custom compare FibonacciHeap
+heap = new FibonacciHeap(function (a, b) {
+  return (a.key + a.value).localeCompare(b.key + b.value);
+});
+heap.insert('2', 'B');
+heap.insert('1', 'a');
+heap.insert('1', 'A');
+heap.insert('2', 'b');
+
+// Extract all nodes in order
+while (!heap.isEmpty()) {
+  var node = heap.extractMinimum();
+  console.log('key: ' + node.key + ', value: ' + node.value);
+}
+// > key: 1, value: a
+// > key: 1, value: A
+// > key: 2, value: b
+// > key: 2, value: B
 ```
 
 ## Operation time complexity
