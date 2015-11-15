@@ -1,7 +1,7 @@
 import test from 'ava';
 import Heap from '../';
 
-test('should leave a valid tree on a flat Fibonacci heap', t => {
+test('should leave a valid tree on a flat Fibonacci heap', function (t) {
   var heap = new Heap();
   heap.insert(13, null);
   heap.insert(26, null);
@@ -25,7 +25,7 @@ test('should leave a valid tree on a flat Fibonacci heap', t => {
   t.end();
 });
 
-test('should leave a valid tree on a consolidated Fibonacci heap', t => {
+test('should leave a valid tree on a consolidated Fibonacci heap', function (t) {
   var heap = new Heap();
   var node0 = heap.insert(0, null);
   var node1 = heap.insert(1, null);

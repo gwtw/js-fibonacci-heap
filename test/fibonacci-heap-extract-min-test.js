@@ -1,7 +1,7 @@
 import test from 'ava';
 import Heap from '../';
 
-test('should consolidate 8 nodes into a well formed order 1 tree', t => {
+test('should consolidate 8 nodes into a well formed order 1 tree', function (t) {
   var heap = new Heap();
   var node0 = heap.insert(0, null);
   var node1 = heap.insert(1, null);
@@ -24,7 +24,7 @@ test('should consolidate 8 nodes into a well formed order 1 tree', t => {
   t.end();
 });
 
-test('should consolidate 8 nodes into a well formed order 2 tree', t => {
+test('should consolidate 8 nodes into a well formed order 2 tree', function (t) {
   var heap = new Heap();
   var node0 = heap.insert(0, null);
   var node1 = heap.insert(1, null);
@@ -57,7 +57,7 @@ test('should consolidate 8 nodes into a well formed order 2 tree', t => {
   t.end();
 });
 
-test('should consolidate 8 nodes into a well formed order 3 tree', t => {
+test('should consolidate 8 nodes into a well formed order 3 tree', function (t) {
   var heap = new Heap();
   var node0 = heap.insert(0, null);
   var node1 = heap.insert(1, null);

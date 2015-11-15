@@ -1,7 +1,7 @@
 import test from 'ava';
 import Heap from '../';
 
-test('should delete nodes in a flat Fibonacci heap', t => {
+test('should delete nodes in a flat Fibonacci heap', function (t) {
   var heap = new Heap();
   var node3 = heap.insert(13, null);
   var node4 = heap.insert(26, null);
@@ -19,7 +19,7 @@ test('should delete nodes in a flat Fibonacci heap', t => {
   t.end();
 });
 
-test('should cut the node from the tree if the node is not the minimum it does not have a grandparent', t => {
+test('should cut the node from the tree if the node is not the minimum it does not have a grandparent', function (t) {
   var heap = new Heap();
   var node1 = heap.insert(1, null);
   var node2 = heap.insert(2, null);
@@ -45,7 +45,7 @@ test('should cut the node from the tree if the node is not the minimum it does n
   t.end();
 });
 
-test('should cut the node from the tree if the node is not the minimum and it has a grandparent', t => {
+test('should cut the node from the tree if the node is not the minimum and it has a grandparent', function (t) {
   var heap = new Heap();
   var node0 = heap.insert(0, null);
   var node1 = heap.insert(1, null);
@@ -93,7 +93,7 @@ test('should cut the node from the tree if the node is not the minimum and it ha
   t.end();
 });
 
-test('should cut the node from the tree if the node is not the minimum, it has a grandparent and its parent is marked', t => {
+test('should cut the node from the tree if the node is not the minimum, it has a grandparent and its parent is marked', function (t) {
   var heap = new Heap();
   var node0 = heap.insert(0, null);
   var node1 = heap.insert(1, null);
@@ -156,7 +156,7 @@ test('should cut the node from the tree if the node is not the minimum, it has a
   t.end();
 });
 
-test('should correctly assign an indirect child when a direct child is cut from the parent', t => {
+test('should correctly assign an indirect child when a direct child is cut from the parent', function (t) {
   var heap = new Heap();
   var node0 = heap.insert(0, null);
   heap.insert(1, null);
