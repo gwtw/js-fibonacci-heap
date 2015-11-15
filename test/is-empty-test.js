@@ -1,12 +1,5 @@
+import Heap from '../';
 import test from 'ava';
-import FibonacciHeap from '../';
+import testHelper from '@tyriar/heap-tests/is-empty-tests';
 
-test('should return whether the heap is empty', t => {
-  var heap = new FibonacciHeap();
-  t.true(heap.isEmpty());
-  heap.insert(1, null);
-  t.false(heap.isEmpty());
-  heap.extractMinimum();
-  t.true(heap.isEmpty());
-  t.end();
-});
+testHelper.run(test, Heap);
