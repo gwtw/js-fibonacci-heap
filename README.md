@@ -152,4 +152,4 @@ Joins another heap to this heap.
 **Parameters**
 
 -   `otherHeap` **BinaryHeap** The other heap.
--   `other`  
+-   `other`
