@@ -16,7 +16,6 @@ test('should delete nodes in a flat Fibonacci heap', function (t) {
   t.is(heap.extractMinimum(), node4);
   t.is(heap.extractMinimum(), node5);
   t.true(heap.isEmpty());
-  t.end();
 });
 
 test('should cut the node from the tree if the node is not the minimum it does not have a grandparent', function (t) {
@@ -42,7 +41,6 @@ test('should cut the node from the tree if the node is not the minimum it does n
   t.is(heap.extractMinimum(), node2);
   t.is(heap.extractMinimum(), node3);
   t.true(heap.isEmpty());
-  t.end();
 });
 
 test('should cut the node from the tree if the node is not the minimum and it has a grandparent', function (t) {
@@ -90,7 +88,6 @@ test('should cut the node from the tree if the node is not the minimum and it ha
   t.is(heap.extractMinimum(), node6);
   t.is(heap.extractMinimum(), node7);
   t.true(heap.isEmpty());
-  t.end();
 });
 
 test('should cut the node from the tree if the node is not the minimum, it has a grandparent and its parent is marked', function (t) {
@@ -153,7 +150,6 @@ test('should cut the node from the tree if the node is not the minimum, it has a
   t.true(heap.extractMinimum() === node5);
   t.true(heap.extractMinimum() === node8);
   t.true(heap.isEmpty());
-  t.end();
 });
 
 test('should correctly assign an indirect child when a direct child is cut from the parent', function (t) {
@@ -192,5 +188,4 @@ test('should correctly assign an indirect child when a direct child is cut from 
   //
   heap.delete(node6);
   t.true(node5.child === node7);
-  t.end();
 });

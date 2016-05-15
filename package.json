@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/Tyriar/js-fibonacci-heap",
   "devDependencies": {
-    "@tyriar/heap-tests": "^0.2.1",
+    "@tyriar/heap-tests": "^1.0.2",
     "ava": "^0.14.0",
     "coveralls": "^2.11.4",
     "documentation-readme": "^2.1.0",

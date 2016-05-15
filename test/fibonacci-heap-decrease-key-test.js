@@ -13,16 +13,15 @@ test('should leave a valid tree on a flat Fibonacci heap', function (t) {
   heap.insert(-10, null);
   heap.insert(16, null);
   heap.decreaseKey(node6, -8);
-  t.same(heap.extractMinimum().key, -10);
-  t.same(heap.extractMinimum().key, -8);
-  t.same(heap.extractMinimum().key, -6);
-  t.same(heap.extractMinimum().key, 3);
-  t.same(heap.extractMinimum().key, 13);
-  t.same(heap.extractMinimum().key, 16);
-  t.same(heap.extractMinimum().key, 26);
-  t.same(heap.extractMinimum().key, 27);
-  t.same(heap.extractMinimum().key, 59);
-  t.end();
+  t.deepEqual(heap.extractMinimum().key, -10);
+  t.deepEqual(heap.extractMinimum().key, -8);
+  t.deepEqual(heap.extractMinimum().key, -6);
+  t.deepEqual(heap.extractMinimum().key, 3);
+  t.deepEqual(heap.extractMinimum().key, 13);
+  t.deepEqual(heap.extractMinimum().key, 16);
+  t.deepEqual(heap.extractMinimum().key, 26);
+  t.deepEqual(heap.extractMinimum().key, 27);
+  t.deepEqual(heap.extractMinimum().key, 59);
 });
 
 test('should leave a valid tree on a consolidated Fibonacci heap', function (t) {
@@ -72,5 +71,4 @@ test('should leave a valid tree on a consolidated Fibonacci heap', function (t) 
   t.true(heap.extractMinimum() === node6);
   t.true(heap.extractMinimum() === node7);
   t.true(heap.isEmpty());
-  t.end();
 });

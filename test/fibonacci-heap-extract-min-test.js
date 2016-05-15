@@ -21,7 +21,6 @@ test('should consolidate 8 nodes into a well formed order 1 tree', function (t) 
   t.true(node2.next === node2);
   t.true(node1.child === node2);
   t.true(node2.child === undefined);
-  t.end();
 });
 
 test('should consolidate 8 nodes into a well formed order 2 tree', function (t) {
@@ -54,7 +53,6 @@ test('should consolidate 8 nodes into a well formed order 2 tree', function (t) 
   t.true(node2.child === undefined);
   t.true(node3.child === node4);
   t.true(node4.child === undefined);
-  t.end();
 });
 
 test('should consolidate 8 nodes into a well formed order 3 tree', function (t) {
@@ -104,5 +102,4 @@ test('should consolidate 8 nodes into a well formed order 3 tree', function (t) 
   t.true(node6.child === undefined);
   t.true(node7.child === node8);
   t.true(node8.child === undefined);
-  t.end();
 });
