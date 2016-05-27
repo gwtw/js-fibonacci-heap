@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tyriar/js-fibonacci-heap.git"
+    "url": "https://github.com/GrowingWithTheWeb/js-fibonacci-heap.git"
   },
   "keywords": [
     "A*",
@@ -24,9 +24,9 @@
   "author": "Daniel Imms (http://www.growingwiththeweb.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Tyriar/js-fibonacci-heap/issues"
+    "url": "https://github.com/GrowingWithTheWeb/js-fibonacci-heap/issues"
   },
-  "homepage": "https://github.com/Tyriar/js-fibonacci-heap",
+  "homepage": "https://github.com/GrowingWithTheWeb/js-fibonacci-heap",
   "devDependencies": {
     "@tyriar/heap-tests": "^1.0.2",
     "ava": "^0.14.0",
