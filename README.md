@@ -1,7 +1,7 @@
-# js-fibonacci-heap  [![NPM version](https://img.shields.io/npm/v/@tyriar/fibonacci-heap.svg?style=flat)](https://www.npmjs.org/package/@tyriar/fibonacci-heap)
+# js-fibonacci-heap
  
-[![Build Status](http://img.shields.io/travis/gwtw/js-fibonacci-heap.svg?style=flat)](http://travis-ci.org/gwtw/js-fibonacci-heap)
-[![Coverage Status](https://img.shields.io/coveralls/gwtw/js-fibonacci-heap.svg?branch=master&service=github)](https://coveralls.io/github/gwtw/js-fibonacci-heap?branch=master)
+[![Build Status](https://api.travis-ci.org/gwtw/js-fibonacci-heap.svg?branch=master)](http://travis-ci.org/gwtw/js-fibonacci-heap)
+[![Coverage Status](https://coveralls.io/repos/github/gwtw/js-fibonacci-heap/badge.svg?branch=master)](https://coveralls.io/github/gwtw/js-fibonacci-heap?branch=master)
 
 A JavaScript implementation of the [Fibonacci heap](http://www.growingwiththeweb.com/2014/06/fibonacci-heap.html) data structure.
 
