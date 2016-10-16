@@ -182,6 +182,7 @@ FibonacciHeap.prototype.compare = function (a, b) {
  * @param {Node} start A node from the root list.
  */
 var NodeListIterator = function (start) {
+  this.index = -1;
   this.items = [];
   var current = start;
   do {
@@ -191,19 +192,17 @@ var NodeListIterator = function (start) {
 };
 
 /**
- * @private
  * @return {boolean} Whether there is a next node in the iterator.
  */
 NodeListIterator.prototype.hasNext = function () {
-  return this.items.length > 0;
+  return this.index < this.items.length - 1;
 };
 
 /**
- * @private
  * @return {Node} The next node.
  */
 NodeListIterator.prototype.next = function () {
-  return this.items.shift();
+  return this.items[++this.index];
 };
 
 /**
