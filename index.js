@@ -96,8 +96,7 @@ FibonacciHeap.prototype.extractMinimum = function () {
 
     // Merge the children of the minimum node with the root list
     this.minNode = mergeLists(nextInRootList, extractedMin.child, this.compare);
-    if (nextInRootList) {
-      this.minNode = nextInRootList;
+    if (this.minNode) {
       this.minNode = consolidate(this.minNode, this.compare);
     }
   }
@@ -148,7 +147,7 @@ FibonacciHeap.prototype.size = function () {
 /**
  * Joins another heap to this heap.
  *
- * @param {BinaryHeap} otherHeap The other heap.
+ * @param {FibonacciHeap} other The other heap.
  */
 FibonacciHeap.prototype.union = function (other) {
   this.minNode = mergeLists(this.minNode, other.minNode, this.compare);
@@ -216,6 +215,7 @@ NodeListIterator.prototype.next = function () {
  * @return {Node} The heap's new minimum node.
  */
 function cut(node, parent, minNode, compare) {
+  node.parent = undefined;
   parent.degree--;
   if (node.next === node) {
     parent.child = undefined;
