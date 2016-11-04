@@ -1,11 +1,11 @@
 # js-fibonacci-heap
- 
+
 [![Build Status](https://api.travis-ci.org/gwtw/js-fibonacci-heap.svg?branch=master)](http://travis-ci.org/gwtw/js-fibonacci-heap)
 [![Coverage Status](https://coveralls.io/repos/github/gwtw/js-fibonacci-heap/badge.svg?branch=master)](https://coveralls.io/github/gwtw/js-fibonacci-heap?branch=master)
 
-A JavaScript implementation of the [Fibonacci heap](http://www.growingwiththeweb.com/2014/06/fibonacci-heap.html) data structure.
+A JavaScript implementation of the [Fibonacci heap](http://www.growingwiththeweb.com/data-structures/fibonacci-heap/overview/) data structure.
 
-![](http://www.growingwiththeweb.com/images/2014/06/15/fibonacci-heap.svg)
+![](http://www.growingwiththeweb.com/images/data-structures/fibonacci-heap/fibonacci-heap.svg)
 
 ## Features
 
