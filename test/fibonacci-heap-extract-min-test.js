@@ -103,3 +103,56 @@ test('should consolidate 8 nodes into a well formed order 3 tree', function (t) 
   t.true(node7.child === node8);
   t.true(node8.child === undefined);
 });
+
+test('should consolidate after extract min is called on a tree with a single tree in the root node list', function (t) {
+  var heap = new Heap();
+  var node0 = heap.insert(0, null);
+  var node1 = heap.insert(1, null);
+  var node2 = heap.insert(2, null);
+  var node3 = heap.insert(3, null);
+  heap.insert(4, null);
+  heap.insert(5, null);
+  heap.insert(6, null);
+  heap.insert(7, null);
+  heap.insert(8, null);
+
+  // Extract minimum to trigger a consolidate nodes into a single Fibonacci tree.
+  //
+  //                                 __1
+  //                                / /|
+  //                               2 c d
+  //  1--2--3--4--5--6--7--8  ->  /| |
+  //                             a b f
+  //                             |
+  //                             e
+  //
+  t.is(heap.extractMinimum(), node0);
+
+  // Delete the 2nd smallest node in the heap which is the child of the single node in the root
+  // list. After this operation is performed the minimum node (1) is no longer pointing the minimum
+  // child in the node list!
+  //
+  //      __1
+  //     / /|         __1
+  //    2 c d        / /|  Note that a in this illustration could also be b, the main thing
+  //   /| |    ->   a c d  to take note of here is that a (or b) may not be the minimum child
+  //  a b f        /| |    of 1 anymore, despite being the node it's linked to.
+  //  |           e b f
+  //  e
+  //
+  heap.delete(node2);
+
+  // Extracting the minimum node at this point must trigger a consolidate on the new list, otherwise
+  // the next minimum may not be the actual minimum.
+  //
+  //
+  //      __1
+  //     / /|       a---c---d
+  //    a c d  ->  /|   |      -> Consolidate now to ensure the heap's minimum is correct
+  //   /| |       e b   f
+  //  e b f
+  //
+  //
+  t.is(heap.extractMinimum(), node1);
+  t.is(heap.findMinimum(), node3);
+});
