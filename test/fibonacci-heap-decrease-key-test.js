@@ -72,3 +72,30 @@ test('should leave a valid tree on a consolidated Fibonacci heap', function (t) 
   t.true(heap.extractMinimum() === node7);
   t.true(heap.isEmpty());
 });
+
+test('should delete the node\'s parent reference after a cut', function (t) {
+  var heap = new Heap();
+  var node1 = heap.insert(1, null);
+  var node2 = heap.insert(2, null);
+  var node3 = heap.insert(3, null);
+  t.is(heap.size(), 3);
+
+  // Trigger a consolidate
+  //
+  //               2
+  //  1--2--3  ->  |
+  //               3
+  //
+  t.is(heap.extractMinimum(), node1);
+
+  // Decrease 3's key such that it's less than its parent
+  //
+  //  2      1
+  //  |  ->  |
+  //  3      2
+  //
+  heap.decreaseKey(node3, 1);
+
+  // Ensure 1's parent is undefined (the link to 2 has been cut)
+  t.is(node3.parent, undefined);
+});
