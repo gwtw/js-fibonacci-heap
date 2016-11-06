@@ -76,7 +76,7 @@ test('should leave a valid tree on a consolidated Fibonacci heap', function (t) 
 test('should delete the node\'s parent reference after a cut', function (t) {
   var heap = new Heap();
   var node1 = heap.insert(1, null);
-  var node2 = heap.insert(2, null);
+  heap.insert(2, null);
   var node3 = heap.insert(3, null);
   t.is(heap.size(), 3);
 
