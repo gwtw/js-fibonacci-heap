@@ -24,7 +24,7 @@ npm install --save @tyriar/fibonacci-heap
 
 ```javascript
 // Import npm module
-var FibonacciHeap = require('@tyriar/fibonacci-heap';
+var FibonacciHeap = require('@tyriar/fibonacci-heap');
 
 // Construct FibonacciHeap
 var heap = new FibonacciHeap();
